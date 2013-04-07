@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkExtensions", "EntityFrameworkExtensions\EntityFrameworkExtensions.csproj", "{74F73253-64C2-4F69-8802-95AE7FBF05D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2318F3F2-A29D-4B8C-B7A2-307FB6E936CC}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		3.5|Any CPU = 3.5|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74F73253-64C2-4F69-8802-95AE7FBF05D1}.3.5|Any CPU.ActiveCfg = 3.5|Any CPU
+		{74F73253-64C2-4F69-8802-95AE7FBF05D1}.3.5|Any CPU.Build.0 = 3.5|Any CPU
+		{74F73253-64C2-4F69-8802-95AE7FBF05D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F73253-64C2-4F69-8802-95AE7FBF05D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F73253-64C2-4F69-8802-95AE7FBF05D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F73253-64C2-4F69-8802-95AE7FBF05D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
