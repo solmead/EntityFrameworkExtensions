@@ -5,7 +5,7 @@ using HttpObjectCaching;
 
 namespace EntityFrameworkExtensions.Context
 {
-    public class ExtensionContext : ActiveRecord.CodeFirst.Context
+    public class ExtensionContext : ActiveRecord.CodeFirst.SimpleContext
     {
 
         //private static IQueryable<ItemNameMap> _itemNamesCached = null;
