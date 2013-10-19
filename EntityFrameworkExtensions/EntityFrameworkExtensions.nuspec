@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/solmead/EntityFrameworkExtensions</licenseUrl>
+    <projectUrl>https://github.com/solmead/EntityFrameworkExtensions</projectUrl>
+    <iconUrl>https://github.com/solmead/EntityFrameworkExtensions</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial release of DB Defined Display Name Extensions</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags></tags>
+  </metadata>
+</package>
