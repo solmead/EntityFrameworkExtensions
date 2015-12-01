@@ -27,7 +27,7 @@ namespace EntityFrameworkExtensions
                 {
                     kName = DisplayNameValue;
                 }
-                var inm = ItemNameMap.LoadByName(kName);
+                var inm = ItemNameMap.LoadByName(kName, Helpers.LinkId);
                 if (inm == null)
                 {
                     inm = new ItemNameMap

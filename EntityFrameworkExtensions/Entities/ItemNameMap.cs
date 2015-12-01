@@ -23,24 +23,27 @@ namespace EntityFrameworkExtensions.Entities
         [Display(Name = "Show Field")]
         public bool IsShown { get; set; }
 
+        public int? LinkId { get; set; }
+
+
         [NotMapped]
         public string CssName
         {
             get { return Name.Replace(".", "_"); }
         }
-        public static ItemNameMap LoadByName(System.Data.Entity.DbContext db, string name)
+        public static ItemNameMap LoadByName(System.Data.Entity.DbContext db, string name, int linkId)
         {
-            return (from r in db.Set<ItemNameMap>() where r.Name == name select r).FirstOrDefault();
+            return (from r in db.Set<ItemNameMap>() where r.Name == name && (linkId==0 || r.LinkId == linkId) select r).FirstOrDefault();
         }
 
-        public static ItemNameMap LoadByName(string name)
+        public static ItemNameMap LoadByName(string name, int linkId)
         {
-            return (from r in ExtensionContext.Current.ItemNameMapsCached where r.Name == name select r).FirstOrDefault();
+            return (from r in ExtensionContext.Current.ItemNameMapsCached where r.Name == name && (linkId == 0 || r.LinkId == linkId) select r).FirstOrDefault();
         }
 
-        public static IQueryable<ItemNameMap> GetListOrdered(System.Data.Entity.DbContext db)
+        public static IQueryable<ItemNameMap> GetListOrdered(System.Data.Entity.DbContext db, int linkId)
         {
-            return (from u in db.Set<ItemNameMap>() orderby u.Name select u);
+            return (from u in db.Set<ItemNameMap>() where (linkId == 0 || u.LinkId == linkId) orderby u.Name select u);
         }
     }
 }

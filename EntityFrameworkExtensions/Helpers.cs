@@ -7,11 +7,19 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using EntityFrameworkExtensions.Entities;
+using HttpObjectCaching;
 
 namespace EntityFrameworkExtensions
 {
     public static class Helpers
     {
+        public static int LinkId
+        {
+            get { return Cache.GetItem<int?>(CacheArea.Session,"EntityFrameworkExtensions_LinkId",()=>(int?)0).Value; }
+            set { Cache.SetItem<int?>(CacheArea.Session, "EntityFrameworkExtensions_LinkId", value); }
+        }
+
+
         public static ItemNameMap GetDisplayNameMap<TModel>(Expression<Func<TModel, object>> expression)
         {
             //return new ItemNameMap()
