@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using EntityFrameworkExtensions.Context;
 using EntityFrameworkExtensions.Entities;
 using HttpObjectCaching;
 
@@ -13,6 +14,12 @@ namespace EntityFrameworkExtensions
 {
     public static class Helpers
     {
+
+        public static void ClearCache()
+        {
+            ExtensionContext.Current.ClearCache();
+        }
+
         public static int LinkId
         {
             get { return Cache.GetItem<int?>(CacheArea.Session,"EntityFrameworkExtensions_LinkId",()=>(int?)0).Value; }

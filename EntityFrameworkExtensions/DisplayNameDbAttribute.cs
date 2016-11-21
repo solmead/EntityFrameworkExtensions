@@ -37,8 +37,11 @@ namespace EntityFrameworkExtensions
                         CurrentDescription = DisplayNameValue,
                         IsShown = true
                     };
-                    inm.Save(ExtensionContext.Current);
-                    ExtensionContext.Current.ClearCache();
+                    ExtensionContext.Current.ItemNameMaps.Add(inm);
+                    ExtensionContext.Current.SaveChanges();
+                    //inm.Save(ExtensionContext.Current);
+                    ExtensionContext.Current.ItemNameMapsCached.Add(inm);
+                    //ExtensionContext.Current.ClearCache();
                 }
                 return inm;
             }

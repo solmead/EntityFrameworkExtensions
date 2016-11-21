@@ -8,7 +8,7 @@ using EntityFrameworkExtensions.Context;
 namespace EntityFrameworkExtensions.Entities
 {
     [Bind(Exclude = "Id")]
-    public class ItemNameMap : Record<ItemNameMap>
+    public class ItemNameMap
     {
 
         public int Id { get; set; }
@@ -31,10 +31,10 @@ namespace EntityFrameworkExtensions.Entities
         {
             get { return Name.Replace(".", "_"); }
         }
-        public static ItemNameMap LoadByName(System.Data.Entity.DbContext db, string name, int linkId)
-        {
-            return (from r in db.Set<ItemNameMap>() where r.Name == name && (linkId==0 || r.LinkId == linkId) select r).FirstOrDefault();
-        }
+        //public static ItemNameMap LoadByName(System.Data.Entity.DbContext db, string name, int linkId)
+        //{
+        //    return (from r in db.Set<ItemNameMap>() where r.Name == name && (linkId==0 || r.LinkId == linkId) select r).FirstOrDefault();
+        //}
 
         public static ItemNameMap LoadByName(string name, int linkId)
         {

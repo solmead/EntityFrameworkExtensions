@@ -1,46 +1,48 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using EntityFrameworkExtensions.Entities;
 using HttpObjectCaching;
 
 namespace EntityFrameworkExtensions.Context
 {
-    public class ExtensionContext : ActiveRecord.CodeFirst.SimpleContext<ExtensionContext>
+    public class ExtensionContext : DbContext
     {
 
         //private static IQueryable<ItemNameMap> _itemNamesCached = null;
 
         public DbSet<ItemNameMap> ItemNameMaps { get; set; }
 
-        public IQueryable<ItemNameMap> ItemNameMapsCached {
+
+        private List<ItemNameMap> GetItemNameMaps()
+        {
+            return (from i in ItemNameMaps select i).ToList();
+        }
+
+        public List<ItemNameMap> ItemNameMapsCached {
             get
             {
-                var itemNamesCached = Cache.GetItem<IQueryable<ItemNameMap>>(CacheArea.Request, "ItemNameMapsCached");
-                if(itemNamesCached == null)
+                return Cache.GetItem<List<ItemNameMap>>(CacheArea.Global, "ItemNameMapsCached", 
+                    () =>
                 {
-                    itemNamesCached = ItemNameMaps.ToList().AsQueryable();
-                    Cache.SetItem(CacheArea.Request, "ItemNameMapsCached", itemNamesCached);
-                }
-                return itemNamesCached;
+                    return GetItemNameMaps();
+                }, 60*20);
             }
         }
         public void ClearCache()
         {
             //_itemNamesCached = null; 
-            Cache.SetItem<IQueryable<ItemNameMap>>(CacheArea.Request, "ItemNameMapsCached", null);
+            Cache.SetItem<IQueryable<ItemNameMap>>(CacheArea.Global, "ItemNameMapsCached", null);
         }
         
         public static ExtensionContext Current
         {
             get
             {
-                var context = Cache.GetItem<ExtensionContext>(CacheArea.Request, "ExtensionContext");
-                if (context == null)
+                return Cache.GetItem<ExtensionContext>(CacheArea.Request, "ExtensionContext", () =>
                 {
-                    context = new ExtensionContext();
-                    Cache.SetItem(CacheArea.Request, "ExtensionContext", context);
-                }
-                return context;
+                    return new ExtensionContext();
+                });
             }
         }
         public ExtensionContext() : base("name=DefaultConnection")
